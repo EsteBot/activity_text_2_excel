@@ -266,15 +266,12 @@ if st.button("View example input Text file, output Excel file & Verification plo
     # Read the Excel file into a Pandas DataFrame, skipping the first row
     df = pd.read_excel(BytesIO(response.content), header=1, index_col=None)
 
-    # Remove the index before displaying
-    df = df.reset_index(drop=True)
-
-    # Display the cleaned data in Streamlit
+    # Display the cleaned data as a table in Streamlit without the default index column
     st.write("Example Outout Excel File")
-    st.dataframe(df, use_container_width=True)
+    st.dataframe(df, use_container_width=True, hide_index=True)
 
     # Assuming 'uploaded_file' is the file you want to process
-    uploaded_file = excel_file_url
+    uploaded_file = example_file_url
 
     # Since 'uploaded_file' is actually a file URL, you should re-read its content
     response = requests.get(uploaded_file)
