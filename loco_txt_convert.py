@@ -2,10 +2,12 @@ import streamlit as st
 import xlwt
 import os
 import pandas as pd
-import matplotlib.pyplot as plt
-from pathlib import Path
 import tempfile
 import requests
+import matplotlib.pyplot as plt
+from pathlib import Path
+from io import BytesIO
+
 
 st.set_page_config(layout="wide")
 
@@ -255,10 +257,16 @@ if st.button("View example input Text file, output Excel file & Verification plo
     st.text_area("Example Input Text File", file_content, height=300)
 
     # Path to the example Excel file
-    example_excel_path = r"X:\Code_Projects\Streamlit\Loco_txt_Converter\grand_spanking_new_processed_data.xls"
+    # Replace with your actual GitHub raw file URL
+    excel_file_url = "https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPOSITORY/main/example.xlsx"
+
+    # Fetch the file from GitHub
+    response = requests.get(file_url)
+
+    excel_data = pd.read_excel(BytesIO(response.content))
 
     # Load the data from the Excel file, skipping the first row
-    df = pd.read_excel(example_excel_path, header=1, index_col=None)
+    df = pd.read_excel(excel_data, header=1, index_col=None)
 
     # Display the cleaned data as a table in Streamlit without the default index column
     st.write("Example Excel File Data:")
