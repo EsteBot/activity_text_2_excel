@@ -257,19 +257,21 @@ if st.button("View example input Text file, output Excel file & Verification plo
     st.text_area("Example Input Text File", file_content, height=300)
 
     # Path to the example Excel file
-    excel_file_url = "https://github.com/EsteBot/activity_text_2_excel/blob/main/grand_spanking_new_processed_data.xls"
+    # Correct raw GitHub file URL
+    excel_file_url = "https://raw.githubusercontent.com/EsteBot/activity_text_2_excel/main/grand_spanking_new_processed_data.xls"
 
     # Fetch the file from GitHub
-    response = requests.get(file_url)
+    response = requests.get(excel_file_url)
 
-    excel_data = pd.read_excel(BytesIO(response.content))
+    # Read the Excel file into a Pandas DataFrame, skipping the first row
+    df = pd.read_excel(BytesIO(response.content), header=1, index_col=None)
 
-    # Load the data from the Excel file, skipping the first row
-    df = pd.read_excel(excel_data, header=1, index_col=None)
+    # Remove the index before displaying
+    df = df.reset_index(drop=True)
 
-    # Display the cleaned data as a table in Streamlit without the default index column
-    st.write("Example Excel File Data:")
-    st.dataframe(df, use_container_width=True, hide_index=True)
+    # Display the cleaned data in Streamlit
+    st.write("Example Outout Excel File")
+    st.dataframe(df, use_container_width=True)
 
     # Assuming 'uploaded_file' is the file you want to process
     uploaded_file = excel_file_url
