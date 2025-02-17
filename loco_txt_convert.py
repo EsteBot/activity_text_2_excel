@@ -246,7 +246,7 @@ else:
     st.info("Please upload a file.")
 st.title("")
 if st.button("View example input Text file, output Excel file & Verification plots"):
-    # URL to the example text file on OneDrive
+    # URL to the example text file on GitHub
     example_file_url = "https://raw.githubusercontent.com/EsteBot/activity_text_2_excel/refs/heads/main/MedAssocOutputExample.txt"
 
     # Download the contents of the text file
@@ -257,8 +257,7 @@ if st.button("View example input Text file, output Excel file & Verification plo
     st.text_area("Example Input Text File", file_content, height=300)
 
     # Path to the example Excel file
-    # Replace with your actual GitHub raw file URL
-    excel_file_url = "https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPOSITORY/main/example.xlsx"
+    excel_file_url = "https://github.com/EsteBot/activity_text_2_excel/blob/main/grand_spanking_new_processed_data.xls"
 
     # Fetch the file from GitHub
     response = requests.get(file_url)
@@ -273,7 +272,7 @@ if st.button("View example input Text file, output Excel file & Verification plo
     st.dataframe(df, use_container_width=True, hide_index=True)
 
     # Assuming 'uploaded_file' is the file you want to process
-    uploaded_file = example_file_url
+    uploaded_file = excel_file_url
 
     # Since 'uploaded_file' is actually a file URL, you should re-read its content
     response = requests.get(uploaded_file)
