@@ -164,7 +164,7 @@ def graph_means_sem(excel_name):
     sem_activity = data[bins].sem()
 
     # Plot the bar chart with error bars
-    plt.figure(figsize=(10, 8))
+    plt.figure(figsize=(6, 4))
     average_activity.plot(kind='bar', yerr=sem_activity, color='skyblue', ecolor='grey', capsize=3)
     plt.title('Mean Locomotor Activity Over Time & SEM')
     plt.xlabel('5min Time Bins')
@@ -245,7 +245,7 @@ else:
 st.title("")
 if st.button("View example input Text file, output Excel file & Verification plots"):
     # URL to the example text file on OneDrive
-    example_file_url = "https://1drv.ms/t/s!ArWyPNkF5S-foaQKpqRMurktxTDObg?e=Ngck4Y"
+    example_file_url = "https://raw.githubusercontent.com/EsteBot/activity_text_2_excel/refs/heads/main/MedAssocOutputExample.txt"
 
     # Download the contents of the text file
     response = requests.get(example_file_url)
