@@ -271,12 +271,12 @@ if st.button("View example input Text file, output Excel file & Verification plo
     st.dataframe(df, use_container_width=True, hide_index=True)
 
     # Assuming 'uploaded_file' is the file you want to process
-    uploaded_file = example_file_url
+    #uploaded_file = example_file_url
 
     # Since 'uploaded_file' is actually a file URL, you should re-read its content
-    response = requests.get(uploaded_file)
-    text_data = response.text
-
+    #response = requests.get(uploaded_file)
+    #text_data = response.text
+    text_data = file_content
     # Display success message
     st.write(":green[File uploaded and validated successfully]")
 
